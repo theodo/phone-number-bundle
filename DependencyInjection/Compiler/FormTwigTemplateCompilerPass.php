@@ -19,8 +19,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class FormTwigTemplateCompilerPass implements CompilerPassInterface
 {
-    private $telLayout = '@MisdPhoneNumber/Form/tel.html.twig';
-    private $telBootstrapLayout = '@MisdPhoneNumber/Form/tel_bootstrap.html.twig';
+    private $phoneLayout = '@MisdPhoneNumber/Form/phone.html.twig';
+    private $phoneBootstrapLayout = '@MisdPhoneNumber/Form/phone_bootstrap.html.twig';
 
     /**
      * {@inheritdoc}
@@ -33,20 +33,20 @@ class FormTwigTemplateCompilerPass implements CompilerPassInterface
 
         $parameter = $container->getParameter('twig.form.resources');
 
-        if (in_array($this->telLayout, $parameter)) {
+        if (in_array($this->phoneLayout, $parameter)) {
             return;
         }
 
         // Insert right after base template if it exists.
         if (($key = array_search('bootstrap_3_horizontal_layout.html.twig', $parameter)) !== false) {
-            array_splice($parameter, ++$key, 0, array($this->telBootstrapLayout));
+            array_splice($parameter, ++$key, 0, array($this->phoneBootstrapLayout));
         } elseif (($key = array_search('bootstrap_3_layout.html.twig', $parameter)) !== false) {
-            array_splice($parameter, ++$key, 0, array($this->telBootstrapLayout));
+            array_splice($parameter, ++$key, 0, array($this->phoneBootstrapLayout));
         } elseif (($key = array_search('form_div_layout.html.twig', $parameter)) !== false) {
-            array_splice($parameter, ++$key, 0, array($this->telLayout));
+            array_splice($parameter, ++$key, 0, array($this->phoneLayout));
         } else {
             // Put it in first position.
-            array_unshift($parameter, array($this->telLayout));
+            array_unshift($parameter, array($this->phoneLayout));
         }
 
         $container->setParameter('twig.form.resources', $parameter);
