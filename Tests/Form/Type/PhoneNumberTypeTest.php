@@ -40,7 +40,7 @@ class PhoneNumberTypeTest extends TypeTestCase
         } else {
             $type = 'Misd\\PhoneNumberBundle\\Form\\Type\\PhoneNumberType';
         }
-        
+
         $form = $this->factory->create($type, null, $options);
 
         $form->submit($input);
@@ -53,7 +53,7 @@ class PhoneNumberTypeTest extends TypeTestCase
 
         $view = $form->createView();
 
-        $this->assertSame('tel', $view->vars['type']);
+        $this->assertSame('phone', $view->vars['type']);
         $this->assertSame($output, $view->vars['value']);
     }
 
@@ -97,7 +97,7 @@ class PhoneNumberTypeTest extends TypeTestCase
 
         $view = $form->createView();
 
-        $this->assertSame('tel', $view->vars['type']);
+        $this->assertSame('phone', $view->vars['type']);
         $this->assertSame($output, $view->vars['value']);
     }
 
@@ -247,7 +247,7 @@ class PhoneNumberTypeTest extends TypeTestCase
     {
         $type = new PhoneNumberType();
 
-        $this->assertSame('tel', $type->getBlockPrefix());
+        $this->assertSame('phone', $type->getBlockPrefix());
         $this->assertSame($type->getBlockPrefix(), $type->getName());
     }
 

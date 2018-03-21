@@ -117,7 +117,7 @@ class PhoneNumberType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['type'] = 'tel';
+        $view->vars['type'] = 'phone';
         $view->vars['widget'] = $options['widget'];
     }
 
@@ -188,6 +188,6 @@ class PhoneNumberType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'tel';
+        return 'phone';
     }
 }
