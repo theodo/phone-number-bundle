@@ -7,6 +7,8 @@ Changelog
 Upcoming release
 
 * Drop support for Symfony < 2.7
+* Add support for Symfony 3.4+
+* Drop support for PHP 5.3
 
 1.3.1
 -----
